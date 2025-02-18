@@ -2,21 +2,90 @@
 <html>
 <head>
     <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: pink;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        label {
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #e9ecef;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #dc3545;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        a:hover {
+            background-color: #a71d2a;
+        }
+    </style>
 </head>
 <body>
-    <h1>Dashboard</h1>
-    <h2>Add New Item</h2>
-    <form method="POST" action="{{ url_for('dashboard') }}">
-        <label for="item_name">Item Name:</label>
-        <input type="text" id="item_name" name="item_name" required><br>
-        <button type="submit">Add Item</button>
-    </form>
-    <h2>Your Grocery List</h2>
-    <ul>
-        {% for item in items %}
-            <li>{{ item.name }}</li>
-        {% endfor %}
-    </ul>
-    <a href="{{ url_for('logout') }}">Logout</a>
+    <div class="container">
+        <h1>Dashboard</h1>
+        <h2>Add New Item</h2>
+        <form method="POST" action="{{ url_for('dashboard') }}">
+            <label for="item_name">Item Name:</label>
+            <input type="text" id="item_name" name="item_name" required><br>
+            <button type="submit">Add Item</button>
+        </form>
+        <h2>Your Grocery List</h2>
+        <ul>
+            {% for item in items %}
+                <li>{{ item.name }}</li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
 </body>
 </html>
